@@ -39,7 +39,7 @@ public class JabatanController {
 	@RequestMapping(value="jabatan/ubah", method = RequestMethod.POST)
 	private String ubahJabatanSubmit(@ModelAttribute JabatanModel jabatan, Model model) {
 		jabatanService.updateJabatan(jabatan, jabatan.getId());
-		return "update-jabatan";
+		return "update";
 	}
 	
 	@RequestMapping(value="jabatan/hapus", method = RequestMethod.POST)

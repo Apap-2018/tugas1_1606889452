@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>View Pilot</title>
+	<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+	<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+
+<body>
+
+	<nav th:replace="fragments/fragment :: navbar(title='Update Jabatan')"></nav><br> 
+		<div class="card border-info mb-3 text-center" style="margin:25px;">
+			<div class="card-header">
+				<h3 th:text="'Detail Jabatan - ' + ${jabatan.nama}"></h3>
+			</div>
+		</div>
+		<div class="card-body">
+		<form th:action="@{/jabatan/ubah/}" th:object="${jabatan}" method="POST">
+		<input type="hidden" th:field="*{id}"/>
+			<div class="container">
+				<table class ="table table-borderless table-striped">
+				<tbody>
+				<tr>
+					<td  th:text="'Nama'" ></td>
+					<td><input type="text" th:field="*{nama}" class="form-control"/></td>
+				</tr>
+				<tr>
+					<td  th:text="'Deskripsi'" ></td>
+					<td><input type="text" th:field="*{deskripsi}" class="form-control"/></td>
+				</tr>
+				<tr>
+					<td  th:text="'Gaji Pokok'" ></td>
+					<td><input type="text" th:field="*{gajiPokok}" class="form-control"/></td>
+				</tr>
+				</tbody>
+				</table>
+				<button type="submit" name="submit">Simpan</button>
+			</form>
+			</div>
+		</div>
+
+</body>
+
+</html>

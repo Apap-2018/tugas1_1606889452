@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.apap.tugas1.model.InstansiModel;
 import com.apap.tugas1.model.JabatanModel;
 import com.apap.tugas1.model.PegawaiModel;
 import com.apap.tugas1.service.InstansiService;
@@ -31,7 +30,8 @@ public class PegawaiController {
 	
 	@RequestMapping("/")
 	private String home(Model model) {
-		model.addAttribute("listInstansi", instansiService.getAll());		
+		model.addAttribute("listInstansi", instansiService.getAll());	
+		model.addAttribute("listJabatan", jabatanService.getAll());	
 		return "home";
 	}
 	

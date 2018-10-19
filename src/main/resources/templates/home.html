@@ -45,5 +45,23 @@
        				</div>
 
        		</div> 
+       		<div class="card border-info mb-3 text-center" style="margin:25px;">
+       			<div class="card-header">
+       			Lihat Pegawai Termuda dan Tertua
+       			</div>
+
+       				<div class="card-body">
+       				    <form th:action="@{/jabatan/view}" method=GET>
+       					<label for="idJabatan">Pilih Jabatan</label>
+       					<select type="text" name="idJabatan" class="form-control"/>
+       					<p></p>
+       					<option th:each="jabatan : ${listJabatan}" th:value="${jabatan.id}" th:text="${jabatan.nama}">
+						</option>
+						</select>
+						<button type="submit" class="btn btn-primary">Lihat!</button>
+						</form>
+       				</div>
+
+       		</div> 
 </body>
 </html>

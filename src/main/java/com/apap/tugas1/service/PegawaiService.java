@@ -5,5 +5,6 @@ import com.apap.tugas1.model.PegawaiModel;
 public interface PegawaiService {
 	PegawaiModel getPegawaiDetailByNip(String nip);
 	double hitungGaji(PegawaiModel pegawai);
+	long hitungUmur (PegawaiModel pegawai);
 
 }

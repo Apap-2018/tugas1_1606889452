@@ -1,5 +1,9 @@
 package com.apap.tugas1.service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,6 +17,7 @@ import com.apap.tugas1.repository.PegawaiDb;
 public class PegawaiServiceImp implements PegawaiService {
 	@Autowired
 	private PegawaiDb pegawaiDb;
+	
 
 	@Override
 	public PegawaiModel getPegawaiDetailByNip(String nip) {
@@ -36,6 +41,21 @@ public class PegawaiServiceImp implements PegawaiService {
 		}
 		return gajiFix;
 		
+	}
+
+	@Override
+	public long hitungUmur(PegawaiModel pegawai) {
+		
+		try {
+			SimpleDateFormat myFormat = new SimpleDateFormat("dd MM yyyy");
+			String tanggalAcuan = "30 12 2050";
+			Date dateAcuan = myFormat.parse(tanggalAcuan);
+			long umur = dateAcuan.getTime() - pegawai.getTanggalLahir().getTime();
+			return umur;
+		}
+		catch (ParseException e){
+			return (long) 0;
+		}
 	}
 
 	

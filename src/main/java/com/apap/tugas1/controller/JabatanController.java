@@ -51,6 +51,11 @@ public class JabatanController {
 		jabatanService.deleteJabatan(jabatanService.getJabatanById(id_jabatan));
 		return "delete-jabatan";
 	}
+	@RequestMapping(value="/jabatan/viewAll", method = RequestMethod.GET)
+	private String viewAll(Model model) {
+		model.addAttribute("listJabatan", jabatanService.getAll());
+		return "view-all";
+	}
 
 	
 }

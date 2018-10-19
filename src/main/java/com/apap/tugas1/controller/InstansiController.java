@@ -3,6 +3,7 @@ package com.apap.tugas1.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,7 @@ import com.apap.tugas1.model.PegawaiModel;
 import com.apap.tugas1.service.InstansiService;
 import com.apap.tugas1.service.PegawaiService;
 
+@Controller
 public class InstansiController {
 	
 	@Autowired

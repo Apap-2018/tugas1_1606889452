@@ -23,14 +23,17 @@ public class JabatanController {
 		return "add-jabatan";
 	}
 	@RequestMapping(value="/jabatan/tambah", method =RequestMethod.POST)
-	private String addJabatanSubmit(@ModelAttribute JabatanModel jabatan) {
+	private String addJabatanSubmit(@ModelAttribute JabatanModel jabatan, Model model) {
 		jabatanService.addJabatan(jabatan);
-		return "add";
+		model.addAttribute("jabatan",jabatan);
+		model.addAttribute("message", "Jabatan berhasil ditambahkan");
+		return "add-jabatan";
 	}
 	
 	@RequestMapping(value="/jabatan/view", method = RequestMethod.GET)
 	private String view(@RequestParam(value="idJabatan") long id_jabatan, Model model) {
 		model.addAttribute("jabatan", jabatanService.getJabatanById(id_jabatan));
+		model.addAttribute("gaji", (long)jabatanService.getJabatanById(id_jabatan).getGajiPokok());
 		return "view-jabatan";
 	}
 	
@@ -43,13 +46,21 @@ public class JabatanController {
 	@RequestMapping(value="/jabatan/ubah/", method = RequestMethod.POST)
 	private String ubahJabatanSubmit(@ModelAttribute JabatanModel jabatan, Model model) {
 		jabatanService.updateJabatan(jabatan, jabatan.getId());
-		return "update";
+		model.addAttribute("jabatan",jabatan);
+		model.addAttribute("message","Data jabatan berhasil diubah");
+		return "update-jabatan";
 	}
 	
 	@RequestMapping(value="/jabatan/hapus", method = RequestMethod.POST)
-	private String hapusJabatan(@RequestParam(value="idJabatan") long id_jabatan,Model model) {
-		jabatanService.deleteJabatan(jabatanService.getJabatanById(id_jabatan));
-		return "delete-jabatan";
+	private String hapusJabatan(@RequestParam(value="idJabatan") long id_jabatan,Model model)throws Exception {
+		try {
+			jabatanService.deleteJabatan(jabatanService.getJabatanById(id_jabatan));
+			model.addAttribute("message","Jabatan berhasil dihapus :)");
+			return "'Redirect:/'";
+		} catch (Exception e) {
+			model.addAttribute("message","Jabatan gagal dihapus");
+			return "'Redirect:/'";
+		}
 	}
 	@RequestMapping(value="/jabatan/viewAll", method = RequestMethod.GET)
 	private String viewAll(Model model) {

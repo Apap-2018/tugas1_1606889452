@@ -16,6 +16,7 @@ import com.apap.tugas1.model.JabatanModel;
 import com.apap.tugas1.model.PegawaiModel;
 import com.apap.tugas1.repository.InstansiDb;
 import com.apap.tugas1.repository.PegawaiDb;
+import com.apap.tugas1.repository.ProvinsiDb;
 import com.apap.tugas1.service.InstansiService;
 import com.apap.tugas1.service.JabatanService;
 import com.apap.tugas1.service.PegawaiService;
@@ -87,13 +88,6 @@ public class PegawaiController {
 			pegawai.setJabatanList(new ArrayList());
 		}
 	}
-	pegawai.getJabatanList().add(new JabatanModel());
-	List<ProvinsiModel> provinsiList =provinsiDb.findAll();
-	List<JabatanModel> jabatanList = jabatanDb.findAll();
-	model.addAttribute("jabatanList",jabatanList);
-	model.addAttribute("pegawai",pegawai);
-	model.addAttribute("provinsi", provinsiList);
-	return "tambah-pegawai";
-	
+
 }	
-}
+

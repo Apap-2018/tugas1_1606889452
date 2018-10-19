@@ -9,18 +9,12 @@
     <object th:include="fragments/fragment :: js"></object>
 </head>
 <body>
+
  	<div th:if="${message != null}">
-                <div class="alert green">
+                <div class="alert red">
                     <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                    <strong>Success!</strong> <p th:text="${message}"></p>
+                    <strong>Oh!</strong> <p th:text="${message}"></p>
                 </div>
-    </div>
-    
-    <div th:if="${message != null}">
-        <div class="alert red">
-            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-            <strong>Opps!</strong> <p th:text="${message}"></p>
-        </div>
     </div>
     
     <nav th:replace="fragments/fragment :: navbar(title='Home')"></nav>

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.apap.tugas1.model.JabatanModel;
 import com.apap.tugas1.service.JabatanService;
@@ -52,14 +53,14 @@ public class JabatanController {
 	}
 	
 	@RequestMapping(value="/jabatan/hapus", method = RequestMethod.POST)
-	private String hapusJabatan(@RequestParam(value="idJabatan") long id_jabatan,Model model)throws Exception {
+	private String hapusJabatan(@RequestParam(value="idJabatan") long id_jabatan,Model model, RedirectAttributes ra)throws Exception {
 		try {
 			jabatanService.deleteJabatan(jabatanService.getJabatanById(id_jabatan));
-			model.addAttribute("message","Jabatan berhasil dihapus :)");
-			return "'Redirect:/'";
+			ra.addFlashAttribute("message", "Jabatan berhasil dihapus :)");
+			return "redirect:/";
 		} catch (Exception e) {
-			model.addAttribute("message","Jabatan gagal dihapus");
-			return "'Redirect:/'";
+			ra.addFlashAttribute("message", "Jabatan gagal dihapus");
+			return "redirect:/";
 		}
 	}
 	@RequestMapping(value="/jabatan/viewAll", method = RequestMethod.GET)

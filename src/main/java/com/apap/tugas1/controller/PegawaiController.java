@@ -1,5 +1,6 @@
 package com.apap.tugas1.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -14,6 +15,7 @@ import com.apap.tugas1.model.InstansiModel;
 import com.apap.tugas1.model.JabatanModel;
 import com.apap.tugas1.model.PegawaiModel;
 import com.apap.tugas1.repository.InstansiDb;
+import com.apap.tugas1.repository.PegawaiDb;
 import com.apap.tugas1.service.InstansiService;
 import com.apap.tugas1.service.JabatanService;
 import com.apap.tugas1.service.PegawaiService;
@@ -33,6 +35,12 @@ public class PegawaiController {
 	
 	@Autowired
 	private InstansiDb instansiDb;
+	
+	@Autowired
+	private PegawaiDb pegawaiDb;
+	
+	@Autowired
+	private ProvinsiDb provinsiDb;
 	
 	@RequestMapping("/")
 	private String home(Model model) {
@@ -72,4 +80,20 @@ public class PegawaiController {
 		return "view-tua-muda";
 	}
 	
+	@RequestMapping("/pegawai/tambah")
+	private String tambahPegawai(Model model) {
+		PegawaiModel pegawai = new PegawaiModel();
+		if(pegawai.getJabatanList()==null) {
+			pegawai.setJabatanList(new ArrayList());
+		}
+	}
+	pegawai.getJabatanList().add(new JabatanModel());
+	List<ProvinsiModel> provinsiList =provinsiDb.findAll();
+	List<JabatanModel> jabatanList = jabatanDb.findAll();
+	model.addAttribute("jabatanList",jabatanList);
+	model.addAttribute("pegawai",pegawai);
+	model.addAttribute("provinsi", provinsiList);
+	return "tambah-pegawai";
+	
+}	
 }

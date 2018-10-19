@@ -81,13 +81,6 @@ public class PegawaiController {
 		return "view-tua-muda";
 	}
 	
-	@RequestMapping("/pegawai/tambah")
-	private String tambahPegawai(Model model) {
-		PegawaiModel pegawai = new PegawaiModel();
-		if(pegawai.getJabatanList()==null) {
-			pegawai.setJabatanList(new ArrayList());
-		}
-	}
 
 }	
 

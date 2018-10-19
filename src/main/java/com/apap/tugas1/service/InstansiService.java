@@ -9,5 +9,6 @@ public interface InstansiService {
 	List<InstansiModel> getAll();
 	PegawaiModel getTua(InstansiModel instansi);
 	PegawaiModel getMuda(InstansiModel instansi);
+	InstansiModel getInstansiById(Long id);
 
 }

@@ -18,6 +18,9 @@ public class InstansiServiceImp implements InstansiService {
 	@Autowired
 	private InstansiDb instansiDb;
 	
+//	@Autowired
+//	private InstansiModel insModel;
+//	
 	@Autowired
 	private PegawaiService pegServ;
 	
@@ -54,6 +57,10 @@ public class InstansiServiceImp implements InstansiService {
 			}
 		}
 		return pegawaiMuda;
+	}
+	@Override
+	public InstansiModel getInstansiById(Long id) {
+		return instansiDb.getOne(id);
 	}
 
 }

@@ -59,6 +59,14 @@
 					<th>Gaji</th>
 					<td th:text="'Rp'+${gaji}"></td>
 				</tr>
+				<tr>
+				<td>
+					<form th:action="@{/pegawai/ubah}">
+					<input hidden th:value="${pegawai.nip}" name="nip" class="form-control"> 
+					<button type="submit" class="btn btn-primary">Ubah</button>
+					</form>
+				</td>
+				</tr>
 				</tbody>
 				</table>
 			</div>

@@ -88,11 +88,12 @@
 					<td>
             	</tr>
             	<tr>
-            		<thead>Jabatan</thead>
+            		<td>Jabatan</td>
             		<td th:each="jabatan,iterationStats : *{jabatanList}" style="padding:10px">
             			<select class="form-control" th:field="*{jabatanList[__${iterationStats.index}__]}" >
 					  		<option  th:each="jabatannya : ${jabatanList}" th:value="${jabatannya.id}" th:text="${jabatannya.nama}" ></option>
 						</select>
+						
             		</td>
             	<tr>
             		<td>

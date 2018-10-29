@@ -255,7 +255,7 @@ public class PegawaiController {
 		model.addAttribute("pegawai", pegawai);
 		model.addAttribute("jabatanList",jab);
 		model.addAttribute("title", "Ubah Data Pegawai");
-		return "edit-pegawai";
+		return "update-pegawai";
 	}
 	@RequestMapping(value = "/pegawai/ubah", method = RequestMethod.POST, params= {"submit"})
 	private String updatePegawaiSubmit(@ModelAttribute PegawaiModel pegawai, Model model) {

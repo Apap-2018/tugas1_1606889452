@@ -41,16 +41,12 @@
             <strong>Success!</strong> <p th:text="${message}"></p>
         </div>
 </div>
-		<div class="card border-info mb-3 text-center" style="margin:25px;">
-			<div class="card-header">
-				<h3 th:text="'Cari Pegawai'"></h3>
-			</div>
-		</div>
-		<div class="card-body">
+	<div id="Content" class="container-full-bg">
+    <div class="container vertical-center" style="padding-top: 32px;">
+        	<h2 th:text="'Cari Pegawai'"></h2>
 		<form th:action="@{/pegawai/cari}" th:object="${pegawai}" method="GET">
-		<input type="hidden" th:field="*{id}"/>
-			<div class="container">
-				<table class ="table table-borderless table-striped">
+			
+			<table class="table">
 				<tbody>
 					<tr>
 						<td th:text="'Provinsi'"></td>
@@ -88,13 +84,46 @@
 			 				</select>
 				 		</td>
 					</tr>
-				</tbody>	
-				</table>
-				<button type="submit" name="submit">Simpan</button>
-			</form>
-			</div>
-			     <script type="text/javascript">
+				</tbody>		
+			</table>
+			<button type="submit" class="btn-primary btn">Cari</button>
+		</form>
+		<hr>
+		<div class="table-responsive table">
+        	<table class="table table-hover" id="myTable">
+        		<thead>
+        			<th>No</th>
+        			<th>NIP</th>
+        			<th>Nama</th>
+        			<th>Tempat Lahir</th>
+        			<th>Tanggal Lahir</th>
+        			<th>Tahun Masuk</th>
+        			<th>Jabatan</th>
+        			<!-- for debug only -->
+        			<th>Instansi</th>
+        		</thead>
+        		<tbody>
+     			<tr th:each="pegawai,iterationStatus : ${allData}">
+     				<td th:text="${iterationStatus.count}"></td>
+					<td th:text="${pegawai.nip}"></td>
+					<td th:text="${pegawai.nama}"></td>
+					<td th:text="${pegawai.tempatLahir}"></td>
+					<td th:text="${pegawai.tanggalLahir}"></td>
+					<td th:text="${pegawai.tahunMasuk}"></td>
+					<td>
+					<ul th:each="jabatan : ${pegawai.getJabatanList()}">
+						<li th:text="${jabatan.nama}"/>
+					</ul>
+					</td>
+					<td th:text="${pegawai.getInstansi().getNama()}+' - '+${pegawai.getInstansi().getProvinsi().getNama()}"></td>
+				</tr>
+     		</tbody>
+        	</table>
+        </div>
+    </div>
+         <script type="text/javascript">
 	$(document).ready(function(){
+		$('#myTable').DataTable();
 		console.log("hey")
 		$('#provinsi').change(function() {
 			valueProv = $(this).val();
@@ -117,17 +146,19 @@
 						console.log(data[i].nama)
 					}
 					console.log(getIns);
+					$('#instansi').show();
 					$('#instansi').append(getIns);
+					$('#instansiAsli').remove();
 				},
 				error: function(rs,e) {
 					alert(rs.responseText)
 				}
 			})
+		
+		
 		})
 	});
 </script>
-		</div>
-
+</div>
 </body>
-
 </html>

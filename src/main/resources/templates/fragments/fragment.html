@@ -6,6 +6,7 @@
         <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
     </head>
     <head th:fragment="js">
+    	<script th:src="@{/js/jquery-3.3.1.min.js}" ></script>
         <script th:src="@{/js/bootstrap.min.js}"></script>
     </head>
 </head>
@@ -24,10 +25,10 @@
                         <a class="nav-link" th:href="@{/jabatan/tambah}">Tambah Jabatan</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" th:href="@{/}">Cari Pegawai</a>
+                        <a class="nav-link" th:href="@{/pegawai/cari}">Cari Pegawai</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" th:href="@{/}">Lihat Semua Jabatan</a>
+                        <a class="nav-link" th:href="@{/jabatan/viewAll}">Lihat Semua Jabatan</a>
                     </li>
                  </li>
             </ul>

@@ -11,5 +11,11 @@ public interface PegawaiService {
 	long hitungUmur (PegawaiModel pegawai);
 	List<PegawaiModel> getPegawaiMuda(InstansiModel instansi);
 	List<PegawaiModel> getPegawaiTua(InstansiModel instansi);
+	void addPegawai(PegawaiModel pegawai);
+	void deletePegawai(PegawaiModel pegawai);
+	void updatePegawai(PegawaiModel pegawai);
+	List<PegawaiModel> findAllPegawai();
+	List<PegawaiModel> getPegawaiByInstansi(InstansiModel instansi);
+	String generateNip(PegawaiModel pegawai);
 
 }

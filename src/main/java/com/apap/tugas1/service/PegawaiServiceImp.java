@@ -1,12 +1,10 @@
 package com.apap.tugas1.service;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -71,5 +69,63 @@ public class PegawaiServiceImp implements PegawaiService {
 	@Override
 	public List<PegawaiModel> getPegawaiTua(InstansiModel instansi) {
 		return pegawaiDb.findAllByInstansiOrderByTanggalLahirDesc(instansi);
+	}
+
+	@Override
+	public void addPegawai(PegawaiModel pegawai) {
+		pegawaiDb.save(pegawai);
+		
+	}
+
+	@Override
+	public void deletePegawai(PegawaiModel pegawai) {
+		pegawaiDb.save(pegawai);
+		
+	}
+
+	@Override
+	public void updatePegawai(PegawaiModel pegawai) {
+		pegawaiDb.save(pegawai);
+		
+	}
+
+	@Override
+	public List<PegawaiModel> findAllPegawai() {
+		return pegawaiDb.findAll();
+	}
+
+	@Override
+	public List<PegawaiModel> getPegawaiByInstansi(InstansiModel instansi) {
+		return pegawaiDb.findByInstansi(instansi);
+	}
+
+	@Override
+	public String generateNip(PegawaiModel pegawai) {
+		DateFormat df = new SimpleDateFormat("ddMMYY");
+		Date tglLahir = pegawai.getTanggalLahir();
+		String formatted = df.format(tglLahir);
+		System.out.println("date->"+formatted);
+		
+		Long kodeInstansi = pegawai.getInstansi().getId();
+		System.out.println("kode instansi->"+kodeInstansi);
+		
+		int idAkhir = 0;
+		for (PegawaiModel peg : findAllPegawai()) {
+			if (peg.getTanggalLahir().equals(pegawai.getTanggalLahir()) && peg.getTahunMasuk().equals(pegawai.getTahunMasuk())) {
+				idAkhir+=1;
+			}
+		}
+		idAkhir+=1;
+		
+		String kodeMasuk = "";
+		if (idAkhir<10) {
+			kodeMasuk = "0"+idAkhir;
+		}
+		else {
+			kodeMasuk = Integer.toString(idAkhir);
+		}
+		
+		System.out.println(kodeInstansi+formatted+pegawai.getTahunMasuk()+kodeMasuk);
+		return kodeInstansi+formatted+pegawai.getTahunMasuk()+kodeMasuk;
 	}
 }

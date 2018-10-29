@@ -1,5 +1,6 @@
 package com.apap.tugas1.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +27,13 @@ public class ProvinsiServiceImp implements ProvinsiService {
 	private ProvinsiDb provinsiDb;
 	
 	@Override
-	public Optional<ProvinsiModel> getProvinsiById(long id) {
+	public ProvinsiModel getProvinsiById(long id) {
 		return provinsiDb.findById(id);
+	}
+
+	@Override
+	public List<ProvinsiModel> findAllProvinsi() {
+		return provinsiDb.findAll();
 	}
 	
 }

@@ -271,7 +271,7 @@ public class PegawaiController {
 		model.addAttribute("title", "Sukses");
 		return "add";
 	}
-	
+
 	
 	@RequestMapping(value = "/pegawai/tambah", method = RequestMethod.POST, params= {"submit"})
 	private String tambahPegawaiSubmit(@ModelAttribute PegawaiModel pegawai, Model model) {

@@ -8,16 +8,14 @@
     <object th:include="fragments/fragment :: css"></object>
     <object th:include="fragments/fragment :: js"></object>
 </head>
-<body>
-
- 	<div th:if="${message != null}">
-                <div class="alert red">
-                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                    <strong>Oh!</strong> <p th:text="${message}"></p>
-                </div>
-    </div>
-    
+<body>  
     <nav th:replace="fragments/fragment :: navbar(title='Home')"></nav>
+    <div th:if="${message != null}">
+        <div class="alert green">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            <strong>Success!</strong> <p th:text="${message}"></p>
+        </div>
+</div>
        <div style="text-align:center; padding-top: 25px;">
        		<h1>Sistem Informasi Kepegawaian</h1>
        		<h3>Selamat Datang di Sistem Informasi Kepegawaian</h3>

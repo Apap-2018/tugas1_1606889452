@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="basepage">
+<head>
+    <title>Internal Server Error</title>
+    <!-- metas, link and scripts -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+    <div th:replace="~{components/Header :: header}"></div>
+    <div id="App">
+        <div class="container" style="margin-top: 40px; padding-bottom: 30px">
+		<div class="row">
+			<div class="col-12">
+				<h1>Internal Server Error</h1>
+				<hr>
+				<p>Terjadi kesalahan.</p>
+			</div>
+		</div>
+	</div>
+        <footer th:replace="~{components/Footer :: footer}"></footer>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Error</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar"></nav>
+<div class="alert alert-warning" style="margin: 2% 2% 2% 2%;" role="alert">
+  <h2 class="alert-heading">Oops!</h2>
+  <span>
+  <p th:text="'We Found an Error: '+${error}">We Found an Error </p>
+  </span>
+  <hr>
+   <form action="/">
+    <button class="btn btn-danger">Home</button>
+    </form>
+</div>
+</html>

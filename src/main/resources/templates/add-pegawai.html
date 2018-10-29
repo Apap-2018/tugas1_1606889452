@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<title>Add Pegawai</title>
+	<title>Tambah Pegawai</title>
 	<object th:include="fragments/fragment :: css" th:remove="tag"></object>
 	<object th:include="fragments/fragment :: js" th:remove="tag"></object>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,14 +33,12 @@
 <body>
 
 	<nav th:replace="fragments/fragment :: navbar(title='Tambah Pegawai')"></nav><br> 
-		<h2>Success Message</h2>
-
 <div th:if="${message != null}">
         <div class="alert green">
             <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
             <strong>Success!</strong> <p th:text="${message}"></p>
         </div>
-</div>
+</div>s
 		<div class="card border-info mb-3 text-center" style="margin:25px;">
 			<div class="card-header">
 				<h3 th:text="'Tambah Jabatan'"></h3>
